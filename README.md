@@ -12,13 +12,19 @@ What's included:
  
 This should work for most easily set up problems, as long as you can describe 
 the differential equations they operate under. 
-i.e. 
+i.e. the set: 
+
 z(t) = v_z(t) + b 
 v_z(t) = F_z/m
+
 becomes: 
+
 'z' : [z_initial_value, 'v_z(t) + b(t)'] 
+
 'v_z' : [v_initial_value, 'F(t)/%s'%m ]
+
 and a general formula for the force: 
+
 'F(t)' : '%s' %(m * g)
 
 You can pass multiple variables as well as these will simply become an 
