@@ -1,3 +1,4 @@
+#!/home/jacobalexander/anaconda/bin/python
 
 """
 Modified ODESolver superclass, 
@@ -15,11 +16,9 @@ for that specific purpose.
 
 Also, figured out the trick;
     #retrieve variables from within the Problem-class(f) and make global: 
-
-module = sys.modules[__name__]
-for val in range(len(f.key_list)):
-    setattr(module, f.key_list[val], u[:,val])
-
+    module = sys.modules[__name__]
+    for val in range(len(f.key_list)):
+        setattr(module, f.key_list[val], u[:,val])
 
 useful for later manipulation of data after ODE is solved, e.g. plotting.
 
@@ -31,7 +30,12 @@ augmented with 'clear' command, for clean display.
 
 ###Note to self: 
 """
-Use snippet below to export variables by name. 
+
+
+if sys.platform == 'darwin':
+    sys.path.append('/Users/JacobAlexander/Dropbox/Py_Resources')
+else:
+    sys.path.append('/home/jacobalexander/Dropbox/Py_Resources/') 
 
 module = sys.modules[__name__]
 for val in range(len(f.key_list)):
@@ -193,13 +197,6 @@ class FromDict:
             problem = FromDict(Formula, T=30, Show_Identified=True, Starttime=0)
             
         returns: u,t (list of indices for u[i] from 'Show_Identified' parameter)
-
-        Use snippet below to export variables by name. 
-
-        module = sys.modules[__name__]
-        for val in range(len(f.key_list)):
-            setattr(module, f.key_list[val], u[:,val])
-
         """
         Parameters_Dict = Formula_list_of_dict[0]
         Variables_Dict = Formula_list_of_dict[1]
@@ -226,8 +223,8 @@ class FromDict:
                 else:
                     start = factor.find('(')
                     stop = factor.find(')')
-                    variables.replace(',', ' ')
                     variables = factor[start+1:stop]
+                    variables.replace(',', ' ')
                     setattr(self, factor[:start],
                             eval('lambda %s: %s'
                             % (variables, Parameters_Dict[factor]))) 
@@ -235,8 +232,8 @@ class FromDict:
             else: 
                 start = factor.find('(')
                 stop = factor.find(')')
-                variables.replace(',', ' ')
                 variables = factor[start+1:stop]
+                variables.replace(',', ' ')
                 setattr(self, factor[:start],
                          eval('lambda %s: %s'
                          % (variables, Parameters_Dict[factor]))) 
