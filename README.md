@@ -15,6 +15,7 @@ the differential equations they operate under.
 i.e. the set: 
 
 z(t) = v_z(t) + b 
+
 v_z(t) = F_z/m
 
 becomes: 
