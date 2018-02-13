@@ -24,7 +24,7 @@ and a general formula for the force:
 You can pass multiple variables as well as these will simply become an 
 anonymous function (lambda (x,y,z,...): return_value) 
 
-From here on I'll provide 3 examples you can test out or be inspired by: 
+From I'll provide 3 examples you can test out or be inspired by: 
 - Particle on an elastic band/spring. 
 - The Lorenz attractor (with animation suggestion) 
 - SIZR (https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#The_SIR_model
